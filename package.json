@@ -46,7 +46,8 @@
     "test:h5": "cross-env UNI_PLATFORM=h5 jest -i",
     "test:ios": "cross-env UNI_PLATFORM=app-plus UNI_OS_NAME=ios jest -i",
     "test:mp-baidu": "cross-env UNI_PLATFORM=mp-baidu jest -i",
-    "test:mp-weixin": "cross-env UNI_PLATFORM=mp-weixin jest -i"
+    "test:mp-weixin": "cross-env UNI_PLATFORM=mp-weixin jest -i",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@dcloudio/uni-app-plus": "^2.0.1-35320220729002",
@@ -98,6 +99,7 @@
     "mini-types": "*",
     "miniprogram-api-typings": "*",
     "postcss-comment": "^2.0.0",
+    "prettier": "^2.7.1",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
