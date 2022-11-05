@@ -1,0 +1,41 @@
+.fw_100 {
+  font-weight: 100; //苹方-简 极细体
+}
+.fw_200 {
+  font-weight: 200; //苹方-简 纤细体
+}
+.fw_300 {
+  font-weight: 300; //苹方-简 细体
+}
+.fw_400 {
+  font-weight: 400; //苹方-简 常规体
+}
+.fw_500 {
+  font-weight: 500; //苹方-简 中黑体
+}
+.fw_600 {
+  font-weight: 600; //苹方-简 中粗体
+}
+.fs_36 {
+  font-size: 36rpx;
+}
+.fs_24 {
+  font-size: 24rpx;
+}
+.uni-checkbox-input {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2px #051c2c solid;
+  background-color: #fff;
+  border-radius: 40rpx;
+}
+.uni-checkbox-input-checked::before {
+  content: '';
+  width: 20rpx;
+  height: 20rpx;
+  background: #051c2c;
+  position: absolute;
+  transform: translate(10rpx, 10rpx);
+  border-radius: 30rpx;
+  border: 1px solid #051c2c;
+}
