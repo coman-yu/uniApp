@@ -85,17 +85,19 @@
           <h2>联系我们</h2>
         </view>
         <view class="contact_container">
-          <view class="contact_item">
-            <view class="contact_img">
-              <image
-                src="/static/index/subcription.png"
-                class="contact_img_loyout"
-              ></image>
+          <web-view>
+            <view class="contact_item">
+              <view class="contact_img">
+                <image
+                  src="/static/index/subcription.png"
+                  class="contact_img_loyout"
+                ></image>
+              </view>
+              <view class="contact_text fw_500">
+                点击关注<br />新职教公众号
+              </view>
             </view>
-            <view class="contact_text fw_500">
-              点击关注<br />新职教公众号
-            </view>
-          </view>
+          </web-view>
 
           <view class="contact_item" style="padding-left: 54rpx">
             <view class="contact_img" @click="show = true">
