@@ -9,18 +9,25 @@
 }
 .fw_400 {
   font-weight: 400; //苹方-简 常规体
+  font-family: PingFangSC-Regular;
 }
 .fw_500 {
   font-weight: 500; //苹方-简 中黑体
+
+  font-family: PingFangSC-Medium;
 }
 .fw_600 {
   font-weight: 600; //苹方-简 中粗体
+  font-family: PingFangSC-Semibolds;
 }
 .fs_36 {
   font-size: 36rpx;
 }
 .fs_24 {
   font-size: 24rpx;
+}
+.fs_30 {
+  font-size: 30rpx;
 }
 .uni-checkbox-input {
   width: 40rpx;
@@ -38,4 +45,28 @@
   transform: translate(10rpx, 10rpx);
   border-radius: 30rpx;
   border: 1px solid #051c2c;
+}
+.text_color {
+  color: #051c2c;
+}
+.pop-wrapper {
+  overflow: auto;
+  border-radius: 3% 3% 0 0;
+  max-height: calc(100vh - 332rpx);
+}
+.button_text_active {
+  margin-right: 10rpx；;
+  color: #ffffff;
+}
+.button_text {
+  margin-right: 10rpx；;
+  color: #051c2c;
+}
+.line_break3 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
