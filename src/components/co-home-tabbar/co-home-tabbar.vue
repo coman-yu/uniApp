@@ -1,33 +1,38 @@
 <template>
-  <u-tabbar
-    :value="currentVal"
-    :placeholder="true"
-    activeColor="#051C2C"
-    inactiveColor="#7B7B7B"
-    :border="false"
-    :fixed="true"
-  >
-    <u-tabbar-item
-      v-for="item in tabList"
-      :key="item.name"
-      :text="item.text"
-      @click="navigationTo(item)"
-      :name="item.name"
+  <view class="wrapper">
+    <u-tabbar
+      :value="currentVal"
+      activeColor="#051C2C"
+      inactiveColor="#7B7B7B"
+      :border="false"
+      :fixed="true"
+      :customStyle="{
+        height: '98rpx',
+        padding: '8rpx 48.5rpx 20rpx 48.5rpx',
+      }"
     >
-      <image
-        class="u-page__item__slot-icon icon_layout"
-        slot="active-icon"
-        :src="item.activeIcon"
+      <u-tabbar-item
+        v-for="item in tabList"
+        :key="item.name"
+        :text="item.text"
+        @click="navigationTo(item)"
+        :name="item.name"
       >
-      </image>
-      <image
-        class="u-page__item__slot-icon icon_layout"
-        slot="inactive-icon"
-        :src="item.inactiveIcon"
-      >
-      </image>
-    </u-tabbar-item>
-  </u-tabbar>
+        <image
+          class="u-page__item__slot-icon icon_layout"
+          slot="active-icon"
+          :src="item.activeIcon"
+        >
+        </image>
+        <image
+          class="u-page__item__slot-icon icon_layout"
+          slot="inactive-icon"
+          :src="item.inactiveIcon"
+        >
+        </image>
+      </u-tabbar-item>
+    </u-tabbar>
+  </view>
 </template>
 
 <script>
@@ -61,8 +66,16 @@ export default {
 .icon_layout {
   width: 48rpx;
   height: 48rpx;
+  padding-bottom: 10rpx;
 }
 
+::v-deep .u-tabbar-item {
+  .u-tabbar-item__text {
+    font-size: 20rpx;
+  }
+}
+</style>
+<style lang="scss">
 ::v-deep .u-tabbar-item__text {
   font-size: 20rpx;
 }

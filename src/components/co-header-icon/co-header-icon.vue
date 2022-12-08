@@ -1,11 +1,9 @@
 <template>
-  <view class="header_wrapper" :style="[{ height: statusBarHeight + 'rpx' }]">
-    <u-navbar :safeAreaInsetTop="true" :border="false" :style="[style]">
-      <view class="u-nav-slot header_logo" slot="left">
-        <image src="/static/logo.png" class="header_image"></image>
-      </view>
-    </u-navbar>
-  </view>
+  <u-navbar :safeAreaInsetTop="true" :border="false" placeholder="true">
+    <view class="u-nav-slot header_logo" slot="left">
+      <image src="/static/logo.png" class="header_image"></image>
+    </view>
+  </u-navbar>
 </template>
 <script>
 const systemInfo = uni.getSystemInfoSync();

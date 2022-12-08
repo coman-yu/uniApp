@@ -1,15 +1,13 @@
 <template>
-  <view class="header_container">
-    <view class="header_wrapper">
-      <u-navbar
-        :border="false"
-        :autoBack="true"
-        :title="title"
-        :titleStyle="titleStyle"
-        :leftIconSize="'55rpx'"
-      ></u-navbar>
-    </view>
-  </view>
+  <u-navbar
+    :border="false"
+    :autoBack="autoBack"
+    :title="title"
+    :titleStyle="titleStyle"
+    :leftIconSize="leftIconSize"
+    placeholder="true"
+    titleWidth="310rpx"
+  ></u-navbar>
 </template>
 
 <script>
@@ -48,7 +46,17 @@ export default {
       default: {
         fontSize: '34rpx',
         fontWeight: 500,
+        fontFamily: 'PingFangSC-Medium',
       },
+    },
+
+    leftIconSize: {
+      type: String,
+      default: '55rpx',
+    },
+    autoBack: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {},

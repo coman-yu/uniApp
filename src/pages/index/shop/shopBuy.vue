@@ -1,7 +1,7 @@
 <template>
   <view class="u-page">
     <co-header-news :title="title"></co-header-news>
-    <view class="buy_container" :style="{ paddingTop: navHeight + 'px' }">
+    <view class="buy_container">
       <view class="buy_title fw_500">商品详情</view>
       <view class="buy_item">
         <view class="item_left">
@@ -52,7 +52,9 @@
           </view>
           <view class="btn_right">
             <u-button color="#051C2C" :customStyle="bottomBtn"
-              >立即付款</u-button
+              ><text style="font-size: 36rpx" class="fw_500"
+                >立即付款</text
+              ></u-button
             >
           </view>
         </view></view
@@ -61,20 +63,19 @@
   </view>
 </template>
 <script>
-const systemInfo = uni.getSystemInfoSync();
 export default {
   data() {
     return {
-      navHeight: systemInfo.statusBarHeight + 44,
       title: '确认购买',
       inputStyle: {
-        height: '80rpx',
+        height: '81rpx',
         borderRadius: '20rpx',
         backgroundColor: '#fff',
         padding: '0 0 0 40rpx ',
       },
       confirmStyle: {
         width: '170rpx',
+        height: '82rpx',
         backgroundColor: '#E4E4E4',
       },
       bottomBtn: {
@@ -93,7 +94,6 @@ export default {
 .buy_container {
   background-color: #f5f5f5;
   padding: 0 40rpx;
-  padding-top: var(--status-bar-height) rpx;
   .buy_title {
     padding-top: 50rpx;
     font-size: 40rpx;

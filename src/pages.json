@@ -1,10 +1,24 @@
 {
   "easycom": {
     "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue",
-    "^co-(.*)": "@/components/co-$1/co-$1.vue"
+    "^co-(.*)": "@/components/co-$1/co-$1.vue",
+    "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
   },
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/index/webView",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
 
     {
       "path": "pages/index/shop/shopItem",
@@ -29,39 +43,74 @@
     },
 
     {
-      "path": "pages/index/index",
-      "style": {
-        "navigationStyle": "custom",
-        "navigationBarTextStyle": "white"
-      }
-    },
-    {
       "path": "pages/index/shop/shopList",
       "style": {
         "navigationStyle": "custom",
         "navigationBarTextStyle": "white"
       }
     },
+
     {
-      "path": "pages/index/dailyNews",
-      "style": { "navigationBarTitleText": "", "navigationStyle": "custom" }
-    },
-    {
-      "path": "pages/index/newsDetail",
+      "path": "pages/school/index",
       "style": {
         "navigationStyle": "custom",
         "navigationBarTextStyle": "white"
       }
     },
     {
-      "path": "pages/index/educationNews",
-      "style": { "navigationBarTitleText": "", "navigationStyle": "custom" }
-    },
-
-    {
-      "path": "pages/school/index",
+      "path": "pages/school/schoolList",
       "style": {
-        "navigationBarTitleText": "学校"
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/school/majorList",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/school/majorDetail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/school/schoolDetail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/school/comment",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/school/feedBack",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/school/rank",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/school/dialog",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
       }
     },
     {
@@ -73,15 +122,39 @@
     {
       "path": "pages/user/index",
       "style": { "navigationBarTitleText": "", "navigationStyle": "custom" }
-    },
-
+    }
+  ],
+  "subPackages": [
     {
-      "path": "pages/index/jobNews",
-      "style": { "navigationBarTitleText": "", "navigationStyle": "custom" }
-    },
-    {
-      "path": "pages/index/peopleNews",
-      "style": { "navigationBarTitleText": "", "navigationStyle": "custom" }
+      "root": "pages/news",
+      "pages": [
+        {
+          "path": "dailyNews",
+          "style": { "navigationBarTitleText": "", "navigationStyle": "custom" }
+        },
+        {
+          "path": "newsDetail",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTextStyle": "white"
+          }
+        },
+        {
+          "path": "educationNews",
+          "style": {
+            "navigationBarTitleText": "",
+            "navigationStyle": "custom"
+          }
+        },
+        {
+          "path": "jobNews",
+          "style": { "navigationBarTitleText": "", "navigationStyle": "custom" }
+        },
+        {
+          "path": "peopleNews",
+          "style": { "navigationBarTitleText": "", "navigationStyle": "custom" }
+        }
+      ]
     }
   ],
   "globalStyle": {

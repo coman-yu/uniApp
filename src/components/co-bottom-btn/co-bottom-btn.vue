@@ -1,9 +1,12 @@
 <template>
-  <view class="bottom_btn" :class="[{ bottom_btn_fixed: fixed }]">
-    <u-button shape="circle">
-      <text class="fw_500" style="color: '#051C2C'; font-size: 36rpx">{{
-        text
-      }}</text>
+  <view
+    class="bottom_btn"
+    :class="[{ bottom_btn_fixed: fixed, 'btn-width': fixed }]"
+  >
+    <u-button :customStyle="btnStyle" :color="btnStyle.backGround">
+      <text class="fw_500" style="color: '#051C2C'; font-size: 36rpx">
+        {{ text }}</text
+      >
     </u-button>
   </view>
 </template>
@@ -19,21 +22,31 @@ export default {
       type: String,
       default: '返回首页',
     },
+    btnStyle: {
+      type: Object,
+      default: {
+        borderRadius: '40rpx',
+        backGround: '#fff',
+        color: '#051C2C',
+      },
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .bottom_btn {
-  width: 670rpx;
   height: 80rpx;
   z-index: 10;
-  padding: 0 40rpx 0 40rpx;
+
   box-sizing: border-box;
 }
 .bottom_btn_fixed {
   position: fixed;
   left: 40rpx;
   bottom: 54rpx;
+}
+.btn-width {
+  width: 670rpx;
 }
 </style>

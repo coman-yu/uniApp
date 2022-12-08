@@ -14,6 +14,7 @@
       enable-play-gesture="true"
       :style="{ width: videoWidth, height: videoHeight }"
       controls
+      play-btn-position="center"
     ></video>
   </view>
 </template>
@@ -49,9 +50,9 @@ export default {
   computed: {},
   mounted() {
     try {
-      this.videoStorage = uni.getStorageSync('videoSchedule') || [];
+      this.videoStorage = uni.getStorageSync('videoList') || [];
       if (this.videoStorage) {
-        console.log('videoSchedule', this.videoStorage);
+        console.log('videoList', this.videoStorage);
         const videoArr = this.videoStorage;
         const index = videoArr.findIndex((item) => item.src === this.src);
         if (index != -1) {
@@ -72,9 +73,10 @@ export default {
       console.log('error', error);
     }
   },
-  destroyed() {
+
+  beforeDestroy() {
     try {
-      this.videoStorage = uni.getStorageSync('videoSchedule') || [];
+      this.videoStorage = uni.getStorageSync('videoList') || [];
       // 判断缓存中是否存在此视频
       const index = this.videoStorage.findIndex(
         (item) => item.src === this.src,
@@ -86,7 +88,7 @@ export default {
           videoUrl: this.src, //视频播放地址
         });
         uni.setStorage({
-          key: 'videoSchedule',
+          key: 'videoList',
           data: this.videoStorage,
           success: function () {
             console.log('success');
@@ -96,7 +98,7 @@ export default {
         //缓存中已有相同视频，改变已看时间替换缓存
         this.videoStorage[index].timeStorage = this.timeStorage;
         uni.setStorage({
-          key: 'videoSchedule',
+          key: 'videoList',
           data: this.videoStorage,
         });
       }

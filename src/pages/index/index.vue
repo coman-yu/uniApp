@@ -14,7 +14,12 @@
           @click="navigator(item.path)"
         >
           <view class="job_item"
-            ><image :src="item.imageSrc" class="item_image"></image>
+            ><u-image
+              :src="item.imageSrc"
+              width="654rpx"
+              height="360rpx"
+              radius="20rpx"
+            ></u-image>
             <view class="job_item_text">
               <h2 class="fw_600">{{ item.title }}</h2>
               <h4 class="fw_500">{{ item.detail }}</h4>
@@ -30,10 +35,13 @@
         <view class="stuffs_container">
           <view class="stuffs_item">
             <view class="stuffs_image">
-              <image
-                src="/static/index/school.jpg"
+              <u-image
+                src="https://cdn.uviewui.com/uview/swiper/swiper3.png"
                 class="stuffs_image"
-              ></image>
+                width="300rpx"
+                height="220rpx"
+                radius="20rpx 20rpx 0 0"
+              ></u-image>
             </view>
             <view class="stuffs_text line_break fw_400"
               >Does ESG really
@@ -43,12 +51,15 @@
 
           <view class="stuffs_item">
             <view class="stuffs_image">
-              <image
-                src="/static/index/school.jpg"
+              <u-image
+                src="https://cdn.uviewui.com/uview/swiper/swiper3.png"
                 class="stuffs_image"
-              ></image>
+                width="300rpx"
+                height="220rpx"
+                radius="20rpx 20rpx 0 0"
+              ></u-image>
             </view>
-            <view class="stuffs_text line_break"
+            <view class="stuffs_text line_break fw_400"
               >Does ESG really
               mattadadsddddddddddddddddddddddddddddddddddddddddddd</view
             >
@@ -56,12 +67,15 @@
 
           <view class="stuffs_item">
             <view class="stuffs_image">
-              <image
-                src="/static/index/school.jpg"
+              <u-image
+                src="https://cdn.uviewui.com/uview/swiper/swiper3.png"
                 class="stuffs_image"
-              ></image>
+                width="300rpx"
+                height="220rpx"
+                radius="20rpx 20rpx 0 0"
+              ></u-image>
             </view>
-            <view class="stuffs_text line_break"
+            <view class="stuffs_text line_break fw_400"
               >Does ESG really
               mattadadsddddddddddddddddddddddddddddddddddddddddddd</view
             >
@@ -72,7 +86,13 @@
             @click="navigator('/pages/index/shop/shopList')"
           >
             <view class="stuffs_image">
-              <image src="/static/index/more.jpg" class="stuffs_image"></image>
+              <u-image
+                src="https://cdn.uviewui.com/uview/swiper/swiper3.png"
+                class="stuffs_image"
+                width="300rpx"
+                height="220rpx"
+                radius="20rpx 20rpx 0 0"
+              ></u-image>
             </view>
             <view class="stuffs_text line_break text-center"
               >查看<br />更多商品</view
@@ -82,22 +102,23 @@
       </view>
       <view class="main_contact">
         <view class="main_title fw_500">
-          <h2>联系我们</h2>
+          <h2 style="font-size: 40rpx">联系我们</h2>
         </view>
         <view class="contact_container">
-          <web-view>
-            <view class="contact_item">
-              <view class="contact_img">
-                <image
-                  src="/static/index/subcription.png"
-                  class="contact_img_loyout"
-                ></image>
-              </view>
-              <view class="contact_text fw_500">
-                点击关注<br />新职教公众号
-              </view>
+          <view class="contact_item">
+            <view class="contact_img">
+              <image
+                src="/static/index/subcription.png"
+                class="contact_img_loyout"
+                @click="
+                  navigator(`/pages/index/webView?webviewPath=${webviewPath}`)
+                "
+              ></image>
             </view>
-          </web-view>
+            <view class="contact_text fw_500">
+              点击关注<br />新职教公众号
+            </view>
+          </view>
 
           <view class="contact_item" style="padding-left: 54rpx">
             <view class="contact_img" @click="show = true">
@@ -122,34 +143,37 @@
 import { mapState } from 'vuex';
 
 export default {
-  styleIsolation: 'shared',
   data() {
     return {
       newsList: [
         {
-          imageSrc: '/static/index/school.jpg',
+          imageSrc: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',
           title: '升学',
           detail: '初中毕业到职业本科',
-          path: '/pages/index/educationNews',
+          path: '/pages/news/educationNews',
         },
         {
-          imageSrc: '/static/index/daily.jpg',
+          imageSrc: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',
           title: '日常',
           detail: '职校生活到国家支持',
-          path: '/pages/index/newsDetail',
+          path: '/pages/news/dailyNews',
         },
         {
-          imageSrc: '/static/index/people.jpg',
+          imageSrc: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',
           title: '人物',
           detail: '认识大国工匠',
+          path: '/pages/news/peopleNews',
         },
         {
-          imageSrc: '/static/index/job.jpg',
+          imageSrc: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',
           title: '就业',
           detail: '传承工匠精神',
+          path: '/pages/news/jobNews',
         },
       ],
       show: false,
+      webviewPath: 'https://baidu.com',
+      currentVal: '',
     };
   },
   methods: {
@@ -157,7 +181,6 @@ export default {
       this.show = false;
     },
     navigator(route) {
-      console.log(route);
       uni.navigateTo({ url: route });
     },
   },
@@ -170,7 +193,7 @@ export default {
 <style lang="scss">
 .u-page {
   .main_container {
-    padding: 120rpx 48rpx;
+    padding: 30rpx 48rpx 100rpx 48rpx;
     .main_title {
       h2 {
         font-size: 50rpx;
@@ -218,7 +241,7 @@ export default {
       }
     }
     .main_stuffs {
-      margin-top: 70rpx;
+      margin-top: 161rpx;
       margin-bottom: 10rpx;
       .main_title {
         h2 {
@@ -265,12 +288,12 @@ export default {
       }
     }
     .main_contact {
-      margin-top: 70rpx;
+      margin-top: 100rpx;
       .main_title {
         h2 {
-          font-size: 40rpx;
+          font-size: 50rpx;
         }
-        padding-bottom: 40rpx;
+        padding-bottom: 30rpx;
       }
       .contact_container {
         display: flex;

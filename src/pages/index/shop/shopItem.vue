@@ -1,20 +1,29 @@
 <template>
   <view class="u-page">
-    <u-swiper
-      :list="swiperList"
-      keyName="url"
-      :autoplay="false"
-      height="670rpx"
-      :imgMode="'heightFix'"
-      indicatorStyle="right:47rpx;bottom:76rpx"
-      @change="(e) => (currentNum = e.current)"
+    <swiper class="swiper_container" @change="swiperChange">
+      <swiper-item v-for="(item, index) in swiperList" :key="index">
+        <video
+          v-if="item.type === 'video'"
+          id="videoCpn"
+          :src="item.url"
+          :poster="item.poster"
+          object-fit="contain"
+          width="100%"
+          height="100%"
+          :style="{ width: '100%', height: '100%' }"
+          controls
+          play-btn-position="center"
+          :show-fullscreen-btn="false"
+          :show-center-play-btn="true"
+        ></video>
+        <image class="swiper_img" mode="scaleToFill" :src="item.url" v-else>
+        </image>
+      </swiper-item>
+    </swiper>
+    <view class="u-indicator-item-number"
+      >{{ swiperCurrent + 1 }}/{{ swiperList.length }}</view
     >
-      <view slot="indicator" class="indicator-num">
-        <text class="indicator-num__text"
-          >{{ currentNum + 1 }}/{{ swiperList.length }}</text
-        >
-      </view></u-swiper
-    >
+
     <view class="shop_container">
       <view class="shop_title fw_500">商品名称</view>
       <view class="shop_price fw_400">¥ 599</view>
@@ -31,17 +40,17 @@
           <view class="shop_buy_label">购买选项一</view>
           <view class="shop_select fw_500">
             <view class="button_wrapper"
-              ><u-button :customStyle="activeBtn" :color="activeBtnColor"
+              ><u-button :customStyle="activeBtn"
                 ><text class="fw_500">学校选择指导</text></u-button
               >
             </view>
             <view class="button_wrapper">
-              <u-button :customStyle="noActiveBtn" :color="noActiveBtnColot"
+              <u-button :customStyle="noActiveBtn"
                 ><text class="fw_500">教学课程</text>
               </u-button></view
             >
             <view class="button_wrapper">
-              <u-button :customStyle="noActiveBtn" :color="noActiveBtnColot"
+              <u-button :customStyle="noActiveBtn"
                 ><text class="fw_500">教学课程</text>
               </u-button></view
             >
@@ -52,17 +61,17 @@
           <view class="shop_buy_label">购买选项一</view>
           <view class="shop_select fw_500">
             <view class="button_wrapper"
-              ><u-button :customStyle="activeBtn" :color="activeBtnColor"
+              ><u-button :customStyle="activeBtn"
                 ><text class="fw_500">学校选择指导</text></u-button
               >
             </view>
             <view class="button_wrapper">
-              <u-button :customStyle="noActiveBtn" :color="noActiveBtnColot"
+              <u-button :customStyle="noActiveBtn"
                 ><text class="fw_500">教学课程</text>
               </u-button></view
             >
             <view class="button_wrapper">
-              <u-button :customStyle="noActiveBtn" :color="noActiveBtnColot"
+              <u-button :customStyle="noActiveBtn"
                 ><text class="fw_500">教学课程</text>
               </u-button></view
             >
@@ -75,7 +84,7 @@
         <view class="sho_img"
           ><u--image
             :showLoading="true"
-            src="/static/index/people.jpg"
+            src="https://cdn.uviewui.com/uview/swiper/swiper2.png"
             width="100%"
             height="1720rpx"
             :mode="heightFix"
@@ -90,20 +99,22 @@
                 src="/static/Icon/other/custom.png"
                 width="60rpx"
                 height="60rpx"
-                @click="show = true"
+                mode="scaleToFill"
               ></u--image
             ></view>
-            <view class="btn_text fw_400">客服</view>
+            <view class="btn_text fw_400" @click="show = true">客服</view>
           </view>
           <view class="btn_right">
             <u-button color="#051C2C" :customStyle="bottomBtn"
-              >立即购买</u-button
+              ><text style="font-size: 36rpx" class="fw_500"
+                >立即购买</text
+              ></u-button
             >
           </view>
         </view>
       </view>
     </view>
-    <co-pop-up :show="show" @pop-close="popClose"></co-pop-up>
+    <!-- <co-pop-up :show="show" @pop-close="popClose"></co-pop-up> -->
   </view>
 </template>
 
@@ -112,12 +123,14 @@ export default {
   data() {
     return {
       show: false,
-      currentNum: 0,
+      swiperCurrent: 0,
       swiperList: [
         {
           url: 'https://cdn.uviewui.com/uview/resources/video.mp4',
           title: '昨夜星辰昨夜风，画楼西畔桂堂东',
           poster: 'https://cdn.uviewui.com/uview/swiper/swiper1.png',
+          type: 'video',
+          objectFit: 'contain',
         },
         {
           url: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',
@@ -132,19 +145,19 @@ export default {
         borderRadius: '14rpx',
         height: '70rpx',
         color: '#fff',
-        display: 'inline-block',
         width: 'fit-content',
         lineHeight: '70rpx',
         padding: '0 30rpx 0 30rpx',
+        backgroundColor: '#051C2C',
       },
       noActiveBtn: {
         borderRadius: '14rpx',
         height: '70rpx',
         color: '#051C2C',
-        display: 'inline-block',
         width: 'fit-content',
         lineHeight: '70rpx',
         padding: '0 30rpx 0 30rpx',
+        backgroundColor: '#F5F5F5',
       },
       bottomBtn: {
         width: '270rpx',
@@ -152,8 +165,6 @@ export default {
         borderRadius: '40rpx',
         color: '#fff',
       },
-      activeBtnColor: '#051C2C',
-      noActiveBtnColot: '#F5F5F5',
     };
   },
 
@@ -161,34 +172,45 @@ export default {
     popClose() {
       this.show = false;
     },
+    swiperChange(e) {
+      this.swiperCurrent = e.detail.current;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.indicator-num {
-  padding: 4rpx 0;
-  background-color: rgba(0, 0, 0, 0.4);
-
+.u-indicator-item-number {
   width: 100rpx;
   height: 50rpx;
-  border-radius: 50rpx;
-  @include flex;
-  justify-content: center;
+  line-height: 50rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 25rpx;
+  font-size: 30rpx;
+  color: #fff;
+  position: absolute;
 
-  &__text {
-    color: #ffffff;
-    font-size: 30rpx;
+  right: 47rpx;
+  bottom: 76rpx;
+  text-align: center;
+}
+.swiper_container {
+  width: 100%;
+  height: 670rpx;
+  .swiper_img {
+    width: 100%;
+    height: 670rpx;
   }
 }
+
 .u-page {
   position: relative;
+
   .shop_container {
     position: absolute;
-    top: 614rpx;
+    top: 611rpx;
     background: #fff;
     width: 100%;
-    height: 100rpx;
     border-radius: 40rpx 40rpx 0 0;
     .shop_title {
       padding-top: 50rpx;

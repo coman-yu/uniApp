@@ -1,5 +1,5 @@
 <template>
-  <u-popup :show="show" :round="20" mode="center">
+  <u-popup :show="show" :round="20" mode="center" duration="500">
     <view class="pop_container">
       <view class="close_icon" @click="closePopup"
         ><image

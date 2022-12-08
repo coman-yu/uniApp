@@ -1,7 +1,7 @@
 <template>
   <view class="u-page">
     <co-header-news :title="title"></co-header-news>
-    <view class="buy_container" :style="{ paddingTop: navHeight + 'px' }">
+    <view class="buy_container">
       <view class="buy_title fw_500">商品详情</view>
       <view class="buy_item">
         <view class="item_left">
@@ -94,7 +94,7 @@
           <view class="btn_left">
             <view class="btn_text"
               ><u-icon name="arrow-leftward" size="40rpx" bold="true"></u-icon>
-              <text class="price fw_500">商城</text></view
+              <text class="price">商城</text></view
             >
           </view>
           <view class="btn_right">
@@ -102,7 +102,9 @@
               color="#051C2C"
               :customStyle="bottomBtn"
               @click="show = true"
-              >人工客服</u-button
+              ><text style="font-size: 36rpx" class="fw_500"
+                >人工客服</text
+              ></u-button
             >
           </view>
         </view></view
@@ -112,11 +114,9 @@
   </view>
 </template>
 <script>
-const systemInfo = uni.getSystemInfoSync();
 export default {
   data() {
     return {
-      navHeight: systemInfo.statusBarHeight + 44,
       title: '发货详情',
       bottomBtn: {
         width: '270rpx',

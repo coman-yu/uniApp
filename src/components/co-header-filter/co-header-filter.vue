@@ -1,9 +1,7 @@
 <template>
-  <u-sticky
-    :offsetTop="statusBarHeight + 'px'"
-    :customNavHeight="statusBarHeight + 'px'"
-  >
-    <view class="header_filter">
+  <view>
+    <view style="height: 140rpx"></view>
+    <view class="header_filter" :style="[{ top: navHeight + 'px' }]">
       <u-button
         :customStyle="gradeFocus ? activeStyle : noActiveStyle"
         type="primary"
@@ -13,7 +11,7 @@
         @click="gradeClick"
         ><text
           :class="gradeFocus ? 'button_text_active' : 'button_text'"
-          style="margin-right: 10rpx"
+          style="margin-right: 10rpx; font-size: 30rpx"
           >年级</text
         ><u-icon
           name="arrow-down-fill"
@@ -23,7 +21,7 @@
         ></u-icon>
       </u-button>
       <u-button
-        :customStyle="cityFocus ? activeStyle : noActiveStyle"
+        :customStyle="cityFocus ? activeStyle1 : noActiveStyle1"
         type="primary"
         shape="circle"
         :plain="true"
@@ -31,7 +29,7 @@
         @click="cityClick"
         ><text
           :class="cityFocus ? 'button_text_active' : 'button_text'"
-          style="margin-right: 10rpx"
+          style="margin-right: 10rpx; font-size: 30rpx"
           >城市</text
         ><u-icon
           name="arrow-down-fill"
@@ -47,35 +45,60 @@
         >{{ leftText }}</view
       >
       <view
-        class="button_right"
+        class="button_right1"
         @click="getNews('newest')"
         :class="[{ button_right_click: !suggestionFocus }]"
         >{{ rightText }}</view
       >
     </view>
-  </u-sticky>
+    <co-city-picker
+      :show="openCityPopup"
+      @closePop="closePop('openCityPopup')"
+    ></co-city-picker>
+    <co-grade-picker
+      :show="openGradePopup"
+      @closePop="closePop('openGradePopup')"
+    ></co-grade-picker>
+  </view>
 </template>
 
 <script>
-import { eventBus, openCityPopup, openGradePopup } from '../../utils/eventBus';
 const systemInfo = uni.getSystemInfoSync();
 export default {
   data() {
     return {
-      statusBarHeight: systemInfo.statusBarHeight + 44,
+      openGradePopup: false,
+      openCityPopup: false,
+      navHeight: systemInfo.statusBarHeight + 44,
       noActiveStyle: {
-        width: '170rpx',
+        width: 'fit-content',
         height: '50rpx',
         margin: 0,
         marginRight: '50rpx',
+        padding: '0 40rpx',
+      },
+      noActiveStyle1: {
+        width: 'fit-content',
+        height: '50rpx',
+        margin: 0,
+        padding: '0 37rpx',
       },
       activeStyle: {
-        width: '170rpx',
+        width: 'fit-content',
         height: '50rpx',
         margin: 0,
-        marginRight: '50rpx',
         color: '#ffffff',
         background: '#051c2c',
+        padding: '0 40rpx',
+        marginRight: '50rpx',
+      },
+      activeStyle1: {
+        width: 'fit-content',
+        height: '50rpx',
+        margin: 0,
+        color: '#ffffff',
+        background: '#051c2c',
+        padding: '0 37rpx',
       },
       suggestionFocus: true,
       gradeFocus: false,
@@ -93,11 +116,14 @@ export default {
     },
     gradeClick() {
       this.gradeFocus = true;
-      eventBus.$emit(openGradePopup);
+      this.openGradePopup = true;
     },
     cityClick() {
       this.cityFocus = true;
-      eventBus.$emit(openCityPopup);
+      this.openCityPopup = true;
+    },
+    closePop(item) {
+      this[item] = false;
     },
   },
   props: {
@@ -119,7 +145,11 @@ export default {
   height: 140rpx;
   padding: 40rpx 0 0 40rpx;
   box-sizing: border-box;
-  background: #fff;
+  position: fixed;
+  top: calc(var(--status-bar-height) + 44px);
+  width: 100%;
+  z-index: 999;
+  background-color: #fff;
   .button_text {
     margin-right: 10rpx；;
     color: #051c2c;
@@ -130,6 +160,12 @@ export default {
     color: #ffffff;
   }
   .button_right {
+    padding-top: 5rpx;
+    margin-left: 110rpx;
+    font-size: 30rpx;
+    color: #919191;
+  }
+  .button_right1 {
     padding-top: 5rpx;
     margin-left: 40rpx;
     font-size: 30rpx;

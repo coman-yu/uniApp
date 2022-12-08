@@ -39,6 +39,10 @@ const store = new Vuex.Store({
         pagePath: '/pages/user/index',
       },
     ],
+    screenHeight: 0,
+    userInfo: {
+      token: '',
+    },
   },
   actions,
   mutations,

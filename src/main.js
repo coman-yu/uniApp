@@ -29,4 +29,6 @@ const app = new Vue({
   store,
   ...App,
 });
+//引入封装请求
+require('@/service/request.js')(app);
 app.$mount();
